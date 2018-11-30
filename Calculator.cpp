@@ -1,14 +1,19 @@
 #include <iostream>
 using namespace std;
 
-class Calculator{
-    public:
-        int Calculate(int, int, char);
+class Calculator
+{
+  public:
+    int Calculate(int, int, char);
 };
 
+class OperatorClass
+{
+    char type;
+};
 
-
-int Calculator::Calculate(int a, int b, char op){
+int Calculator::Calculate(int a, int b, char op)
+{
     switch (op)
     {
     case '+':
@@ -26,9 +31,17 @@ int Calculator::Calculate(int a, int b, char op){
     }
 }
 
-int main(){
-    
-    cout <<"Hello World" << endl;
+int main()
+{
+
+    int x, y, result;
+    char oper;
+    cout << "Please enter num1 operator num2: " << endl;
+    cin >> x >> oper >> y;
+
+    Calculator c;
+    result = c.Calculate(x, y, oper);
+    cout << "Result is: " << result << endl;
 
     cin.ignore();
     cin.get();
