@@ -1,46 +1,94 @@
 #include <iostream>
+#include <stack>
 using namespace std;
 
+enum class Advanced {sin, cos, tan, log};
 class Calculator
 {
+    string replaceAll(string);
   public:
-    int Calculate(int, int, char);
+    int Evaluate(string);
 };
 
 class OperatorClass
 {
     char type;
+    public:
+    int performOperation(int, int, char);
 };
 
-int Calculator::Calculate(int a, int b, char op)
+int Calculator::Evaluate(string oper)
 {
-    switch (op)
-    {
-    case '+':
-        return (a + b);
-    case '-':
-        return (a - b);
-    case '*':
-        return (a * b);
-    case '/':
-        if (b != 0)
-            return (a / b);
-    default:
-        cin >> a >> op >> b;
-        return Calculate(a, b, op);
+    oper = replaceAll(oper);
+    cout << oper << endl;
+    stack<string> braces_op;
+    stack<int> nums;
+
+    for(int i = 0; i<oper.length(); i++){
+        if((oper[i]-'0')>){
+            braces_op.push(to_string(oper[i]));
+        }
     }
+
+    // switch (op)
+    // {
+    // case '+':
+    //     return (a + b);
+    // case '-':
+    //     return (a - b);
+    // case '*':
+    //     return (a * b);
+    // case '/':
+    //     if (b != 0)
+    //         return (a / b);
+    // default:
+    //     cin >> a >> op >> b;
+    //     return Evaluate(a, b, op);
+    // }
+    return 0;
+}
+
+string Calculator::replaceAll(string oper){
+    size_t index = 0;
+    while(true){
+        index = oper.find("sin", index);
+        if (index == std::string::npos) break;
+        oper.replace(index, 3, "s");
+        index += 1;
+    }
+    index = 0;
+    while(true){
+        index = oper.find("cos", index);
+        if (index == std::string::npos) break;
+        oper.replace(index, 3, "c");
+        index += 1;
+    }
+    index = 0;
+    while(true){
+        index = oper.find("tan", index);
+        if (index == std::string::npos) break;
+        oper.replace(index, 3, "t");
+        index += 1;
+    }
+    index = 0;
+    while(true){
+        index = oper.find("log", index);
+        if (index == std::string::npos) break;
+        oper.replace(index, 3, "l");
+        index += 1;
+    }
+    return oper;
 }
 
 int main()
 {
-
-    int x, y, result;
-    char oper;
-    cout << "Please enter num1 operator num2: " << endl;
-    cin >> x >> oper >> y;
+    int result;
+    string oper;
+    cout << "Please enter operation: " << endl;
+    cin >> oper;
 
     Calculator c;
-    result = c.Calculate(x, y, oper);
+    result = c.Evaluate(oper);
     cout << "Result is: " << result << endl;
 
     cin.ignore();
