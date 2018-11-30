@@ -6,7 +6,7 @@
         {
             "label": "build",
             "type": "shell",
-            "command": "g++ -g Calculator.cpp -o Calculator",
+            "command": "g++ -std=c++17 -g Calculator.cpp -o Calculator",
             "group": {
                 "kind": "build",
                 "isDefault": true
