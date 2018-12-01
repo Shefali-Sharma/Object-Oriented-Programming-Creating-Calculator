@@ -1,20 +1,21 @@
 #include <iostream>
 #include <stack>
+#include <string>
 using namespace std;
 
-enum class Advanced {sin, cos, tan, log};
+enum class Advanced
+{
+    sin,
+    cos,
+    tan,
+    log
+};
 class Calculator
 {
     string replaceAll(string);
+
   public:
     int Evaluate(string);
-};
-
-class OperatorClass
-{
-    char type;
-    public:
-    int performOperation(int, int, char);
 };
 
 int Calculator::Evaluate(string oper)
@@ -24,8 +25,10 @@ int Calculator::Evaluate(string oper)
     stack<string> braces_op;
     stack<int> nums;
 
-    for(int i = 0; i<oper.length(); i++){
-        if((oper[i]-'0')>){
+    for (int i = 0; i < oper.length(); i++)
+    {
+        if ((oper[i] - '0') > 48)
+        {
             braces_op.push(to_string(oper[i]));
         }
     }
@@ -48,32 +51,41 @@ int Calculator::Evaluate(string oper)
     return 0;
 }
 
-string Calculator::replaceAll(string oper){
+string Calculator::replaceAll(string oper)
+{
     size_t index = 0;
-    while(true){
+    while (true)
+    {
         index = oper.find("sin", index);
-        if (index == std::string::npos) break;
+        if (index == std::string::npos)
+            break;
         oper.replace(index, 3, "s");
         index += 1;
     }
     index = 0;
-    while(true){
+    while (true)
+    {
         index = oper.find("cos", index);
-        if (index == std::string::npos) break;
+        if (index == std::string::npos)
+            break;
         oper.replace(index, 3, "c");
         index += 1;
     }
     index = 0;
-    while(true){
+    while (true)
+    {
         index = oper.find("tan", index);
-        if (index == std::string::npos) break;
+        if (index == std::string::npos)
+            break;
         oper.replace(index, 3, "t");
         index += 1;
     }
     index = 0;
-    while(true){
+    while (true)
+    {
         index = oper.find("log", index);
-        if (index == std::string::npos) break;
+        if (index == std::string::npos)
+            break;
         oper.replace(index, 3, "l");
         index += 1;
     }
