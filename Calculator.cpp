@@ -10,6 +10,16 @@ enum class Advanced
     tan,
     log
 };
+
+class OperatorClass
+{
+    char type;
+    public:
+    int performOperation(int, int, char);
+};
+
+
+
 class Calculator
 {
     string replaceAll(string);
